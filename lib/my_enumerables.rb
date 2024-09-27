@@ -16,6 +16,25 @@ module Enumerable
     end
     true
   end
+
+  def my_any?
+    my_each do |element|
+      return true if yield(element)
+    end
+    false
+  end
+
+  def my_count
+    if block_given?
+      counter = 0
+      my_each do |element|
+        counter += 1 if yield(element)
+      end
+      counter
+    else
+      length
+    end
+  end
 end
 
 # You will first have to define my_each
