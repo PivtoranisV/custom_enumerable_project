@@ -1,11 +1,20 @@
+# frozen_string_literal: true
+
 module Enumerable
   def my_each_with_index
     index = 0
-    self.my_each do |element|
+    my_each do |element|
       yield(element, index)
       index += 1
     end
     self
+  end
+
+  def my_all?
+    my_each do |element|
+      return false unless yield(element)
+    end
+    true
   end
 end
 
