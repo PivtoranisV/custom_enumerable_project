@@ -46,6 +46,14 @@ module Enumerable
     end
     accumulator
   end
+
+  def my_map
+    mapped_array = []
+    my_each do |element|
+      mapped_array << yield(element)
+    end
+    mapped_array
+  end
 end
 
 # You will first have to define my_each
