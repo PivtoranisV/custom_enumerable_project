@@ -35,6 +35,17 @@ module Enumerable
       length
     end
   end
+
+  def my_inject(initial_value = nil)
+    accumulator = initial_value || self[0]
+
+    start_index = initial_value ? 0 : 1
+
+    self[start_index..].my_each do |element|
+      accumulator = yield(accumulator, element)
+    end
+    accumulator
+  end
 end
 
 # You will first have to define my_each
